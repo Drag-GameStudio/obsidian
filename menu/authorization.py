@@ -34,7 +34,7 @@ def login(login, password):
     if curr_client is None:
         return -1
     if curr_client.password != get_sha(password):
-        return -1
+        return -2
     
 
     curr_session = Session.objects.create(

@@ -104,7 +104,6 @@ function edit_comment(curr_comment_id, new_content) {
     })
         .then(response => {
             if(response.ok){
-                console.log("comment edit")
             }
             else{
                 (response => response.json()).then(data => {console.log(data)})

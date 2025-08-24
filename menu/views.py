@@ -33,7 +33,10 @@ def login_user(request):
 
         session = login(login_user, password)
         if session == -1:
-            return JsonResponse({"status": "error", "message": "Login failed. Invalid credentials."}, status=400)
+            return JsonResponse({"status": "error", "message": "Login failed. Invalid login."}, status=400)
+        elif session == -2:
+            return JsonResponse({"status": "error", "message": "Login failed. Invalid password."}, status=400)
+
 
         response = JsonResponse({"status": "success"})
         response.set_cookie('session_id', session.session_id, httponly=True, max_age=3600 * 24 * 7)
