@@ -52,7 +52,7 @@ body {
 
 /* Плавное появление вложенных заметок */
 .note:not(.collapsed) > .note-content > .note {
-  animation: fadeSlideIn 0.2s ease;
+  animation: fadeSlideIn 0.5s ease;
 }
 
 @keyframes fadeSlideIn {

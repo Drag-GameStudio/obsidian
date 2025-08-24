@@ -81,4 +81,9 @@
         height: 120px;
         font-size: 1em;
     }
+
+    button.handle_button {
+        margin-left: 0;
+        padding: 0;
+    }
 }

@@ -89,3 +89,24 @@ function delete_comment(curr_comment_id) {
             del_note(curr_comment_id)
         })
 }
+
+function edit_comment(curr_comment_id, new_content) {
+    fetch(`${BASE_URL}/graph/edit_comment/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": get_csrf_token()
+        },
+        body: JSON.stringify({
+            comment_id: curr_comment_id,
+            new_content: new_content
+        })
+    })
+        .then(response => {
+            if(response.ok){
+            }
+            else{
+                (response => response.json()).then(data => {console.log(data)})
+            }
+        })
+}
