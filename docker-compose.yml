@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+    db:
+      image: mysql:8.0
+      # restart: always
+
+      environment:
+        - MYSQL_DATABASE=ObsidianDB
+        - MYSQL_ROOT_PASSWORD=admin
+     
+      volumes:
+        - mysql_data:/var/lib/mysql
+      ports:
+        - "3306:3306"
+      
+      networks:
+        - tribe_network
+
+    web:
+      image: obsidian:latest
+      restart: always
+      command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      depends_on:
+        - db
+      environment:
+        - DB_TYPE=1
+        - DB_USER=root
+        - DB_PASSWORD=admin
+        - DB_NAME=ObsidianDB
+        - DB_HOST=db
+        - DB_PORT=3306
+      ports:
+        - "8000:8000"
+
+      networks:
+        - tribe_network
+
+
+networks:
+  tribe_network:
+
+volumes:
+  mysql_data:

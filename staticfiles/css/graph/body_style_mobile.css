@@ -1,0 +1,84 @@
+@media only screen and (max-width: 600px) {
+
+    .delete-modal__container {
+        padding: 20px;
+    }
+
+    .delete-modal__title {
+        font-size: 18px;
+    }
+
+    .delete-modal__buttons {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+
+
+    header {
+        padding: 20px 0px;
+        justify-content: left;
+        /* можно центрировать на маленьком экране */
+    }
+
+    .user-box {
+        gap: 16px;
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .username {
+        font-size: 1.2em;
+        /* увеличенный шрифт */
+        font-weight: bold;
+    }
+
+    .logout-btn {
+        padding: 10px 18px;
+        font-size: 1.1em;
+        border-radius: 10px;
+    }
+
+    body {
+        padding: 15px;
+        font-size: 16px;
+        /* чуть больше для удобства */
+    }
+
+    .note {
+        margin-left: 0;
+        padding-left: 12px;
+    }
+
+    .handle_button {
+        padding: 2px;
+    }
+
+    .note-header {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    button {
+        padding: 10px 16px;
+        font-size: 1.1em;
+        border-radius: 8px;
+    }
+
+    .modal-content {
+        width: 80%;
+        margin: 20% auto;
+        padding: 20px;
+        font-size: 1em;
+    }
+
+    .date {
+        font-size: 0.9em;
+        margin-left: 8px;
+    }
+
+    textarea {
+        height: 120px;
+        font-size: 1em;
+    }
+}

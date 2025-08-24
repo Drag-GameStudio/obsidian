@@ -1,0 +1,7 @@
+Django
+g4f
+seal-py
+django-environ
+typing_extensions
+mysqlclient
+whitenoise

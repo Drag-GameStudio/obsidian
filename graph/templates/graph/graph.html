@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/graph/body_style_desktop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/graph/delete_modal_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/graph/header_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/graph/body_style_mobile.css' %}">
+
+    <title>Obsidian</title>
+</head>
+<body>
+    <header>
+        <div class="user-box">
+            <span class="username">{{ username }}</span>
+            <button onclick="logout_user()" class="logout-btn">Выйти</button>
+        </div>
+    </header>
+
+    <h1>Заметки</h1>
+    <button onclick="openModal(null)">Добавить заметку</button>
+
+    <div id="notes-container"></div>
+
+    <!-- Модальное окно -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Новая заметка</h2>
+            <textarea id="noteText" placeholder="Введите текст заметки..."></textarea>
+            <br>
+            <button onclick="saveNote()">Сохранить</button>
+        </div>
+    </div>
+
+    <div class="delete-modal__overlay" id="deleteModal">
+        <div class="delete-modal__container">
+            <h2 class="delete-modal__title">Удалить заметку?</h2>
+            <p class="delete-modal__text">Вы уверены, что хотите удалить эту заметку? Это действие необратимо.</p>
+            <div class="delete-modal__buttons">
+                <button class="delete-modal__button delete-modal__button--cancel"
+                    id="deleteModalCancelBtn">Отмена</button>
+                <button class="delete-modal__button delete-modal__button--confirm"
+                    id="deleteModalConfirmBtn">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+<script>
+    function get_csrf_token() {
+        return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    }
+</script>
+
+<script src="{% static 'js/graph/request_manager_script.js' %}"></script>
+<script src="{% static 'js/graph/del_model_script.js' %}"></script>
+<script src="{% static 'js/graph/client_note_manager_script.js' %}"></script>
+
+
+<script>
+    loadNotesByParent()
+</script>
+
+</html>
