@@ -108,6 +108,29 @@ def delete_comment(request):
         
     return redirect('/menu/') 
 
+def edit_comment(request):
+      if request.method == 'POST':
+        data = json.loads(request.body)
+        comment_id = data.get('comment_id')
+        new_content = data.get('new_content')
+
+        session_id = request.COOKIES.get('session_id')  # Example of accessing session_id cookie
+        user_password = request.COOKIES.get('user_password')  # Example of accessing user_password cookie
+
+        if auth(session_id, user_password):
+            curr_commment = Comment.objects.filter(comment_id=comment_id).filter(client=get_Client(session_id)).first()
+            if curr_commment is None:
+                return JsonResponse({"status": "error", "message": "this comment has not been created"}, status=400)
+            curr_commment.content = content_cipher(new_content, user_password)
+            curr_commment.save()
+            return JsonResponse({"status": "success"})
+
+        
+        return redirect('/menu/') 
+
+
+
+
 
 def gpt_think_view(request):
     if request.method == 'GET':

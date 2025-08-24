@@ -37,6 +37,19 @@
         </div>
     </div>
 
+    <div id="editNoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Отредактировать заметку</h2>
+            <textarea id="editNoteText" placeholder="Введите новый текст для заметки"></textarea>
+            <br>
+            <button onclick="editNote()">Сохранить</button>
+        </div>
+    </div>
+
+
+    
+
     <div class="delete-modal__overlay" id="deleteModal">
         <div class="delete-modal__container">
             <h2 class="delete-modal__title">Удалить заметку?</h2>

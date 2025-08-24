@@ -30,7 +30,7 @@ class GPT:
 
 
     def get_answer_without_history(self, prompt):
-        c_of_iter = 2
+        c_of_iter = 1
         for i in range(c_of_iter * len(self.gpt_models)):
             try:
                 response = self.client.chat.completions.create(
